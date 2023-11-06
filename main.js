@@ -1,13 +1,3 @@
-escapeHTMLPolicy = trustedTypes.createPolicy('default', {
-  createHTML: (string) => string,
-  createScriptURL: (string) => string,
-  createScript: (string) => string,
-});
-const notes = document.createElement('notes');
-document.body.appendChild(notes);
-notes.id = 'notes';
-notes.classList.add('material-icons', 'notes-minimize');
-
 const createStyle = (atribute) => {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
@@ -95,7 +85,7 @@ const resizeWindow = (element) => {
     window.removeEventListener('mouseup', stopResize); // Remove o ouvinte do evento de liberação do mouse
   };
 };
-createStyle('https://filipesanches.github.io/project/assets/css/style.css');
+createStyle('https://filipesanches.github.io/vrification-available/assets/css/style.css');
 createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 dragElement(notes);
 // Aplica função resizeWindow
