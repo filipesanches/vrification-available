@@ -85,7 +85,7 @@ const resizeWindow = (element) => {
     window.removeEventListener('mouseup', stopResize); // Remove o ouvinte do evento de liberação do mouse
   };
 };
-createStyle('https://filipesanches.github.io/vrification-available/assets/css/style.css');
+createStyle('https://filipesanches.github.io/vrification-available/style.css');
 createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 dragElement(notes);
 // Aplica função resizeWindow
