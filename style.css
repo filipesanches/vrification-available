@@ -1,1 +1,413 @@
+/* Reset css */
+#notes *:not(.material-icons) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+}
 
+/* Variaveis */
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-bar-button: #1a73e8;
+  --color-bar-button-hover: #3684eb;
+}
+
+/* Corpo do notes */
+#notes {
+  background-color: var(--color-white);
+  position: absolute;
+  z-index: 10000;
+  top: 10px;
+  left: 10px;
+  overflow: hidden;
+  max-width: 900px;
+  width: 650px;
+  height: 700px;
+  border-radius: 5px;
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
+}
+
+/*Dark theme*/
+#notes.dark-theme:not(#notes.notes-minimize) {
+  filter: invert(1);
+}
+#notes.dark-theme #notesmoove,
+#notes.dark-theme #abas,
+#notes.dark-theme .button-success,
+#notes.dark-theme .button-reset,
+#notes.dark-theme .buttons-blue,
+#notes.dark-theme .icons {
+  filter: invert(1) !important;
+}
+/* Estilos para a caixa de notas minimizada */
+#notes.notes-minimize {
+  position: fixed !important;
+  width: 0 !important;
+  height: 0 !important;
+  transition: width 0.3s ease, height 0.3s ease !important;
+}
+
+/* Ícone dentro da caixa de notas minimizada */
+#notes.notes-minimize::before {
+  content: 'edit_note';
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
+  font-size: 40px;
+  color: #fff;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-bar-button);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1 !important;
+  transition: opacity 0.3s ease;
+}
+
+#notes .hide {
+  display: none;
+  /* Oculta as abas */
+}
+#notes .show {
+  display: block;
+  /* Exibe a aba */
+}
+
+/* Buttons styles */
+#notes .button-success,
+#notes .button-reset {
+  font-size: 13pt;
+  padding: 10px;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out; /* Ajuste da transição para torná-la mais suave */
+}
+#notes .button-success {
+  background-color: var(--color-bar-button);
+}
+#notes .button-reset {
+  background-color: #e8776e;
+}
+#notes .button-success:hover,
+#notes .button-reset:hover {
+  filter: brightness(125%); /* Adição de um leve efeito de brilho ao passar o mouse */
+}
+
+#notes > #notesmoove,
+#notes > #abas {
+  color: var(--color-white);
+  background-color: var(--color-bar-button);
+  display: flex;
+}
+
+#notes > #notesmoove {
+  font-size: 15pt;
+  align-items: center;
+  padding: 10px;
+  cursor: move;
+}
+
+#notes > #notesmoove > span:last-child {
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+#notes > #notesmoove > span:last-child > * {
+  border-radius: 50%;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+/*Bolha hover*/
+#notes > #notesmoove > span:last-child > *:hover {
+  background-color: #fdfdfd36;
+  padding: 10px;
+}
+
+/* Estilos para as abas */
+#notes > #abas > [data-abas] {
+  display: inline-block;
+  padding: 5px 10px;
+  border-bottom: 4px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+#notes > #abas > [data-abas]:hover {
+  border-bottom-color: #b6b6b6;
+  background-color: var(--color-bar-button-hover);
+}
+#notes > #abas > .highlight {
+  border-bottom: 4px solid var(--color-white) !important;
+  transition: border-color 0.3s ease;
+}
+
+#notes > .all-content {
+  max-height: calc(100% - 77px);
+  height: 100%;
+  padding: 10px 10px 30px 10px !important;
+}
+
+#notes > .all-content > [id^='content-'] {
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-white);
+  padding: 10px !important;
+}
+
+#notes > .all-content > [id^='content-'] > .card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dee0e4;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+#notes > .all-content > [id^='content-'] > .card > .label-card {
+  border-bottom: 1px solid #dee0e4;
+  cursor: default;
+  display: flex;
+  font-size: 14pt;
+  background-color: #fafafa;
+  color: #48494b;
+  padding: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ * {
+  padding: 9px;
+}
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p * {
+  padding: 5px;
+}
+
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ *,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p > label > input {
+  outline: none;
+  border: none;
+  border-bottom: 3px solid #e5e6e9;
+  width: calc(100% - 20px) !important;
+  transition: border-bottom-color 0.5s ease-in-out;
+  background-color: var(--color-white);
+}
+
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ *:focus,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p > label > input:focus {
+  border-bottom-color: var(--color-bar-button);
+}
+
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > hotkey,
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > p {
+  border: none !important;
+}
+
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > p {
+  display: flex !important;
+  flex-flow: column/nowrap !important;
+  justify-content: flex-end !important;
+}
+
+#notes > .all-content > [id^='content-'] > div > div > p > label > input {
+  max-width: 70% !important;
+  display: inline !important;
+  outline: none;
+  padding: 5px;
+}
+
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+#notes > .all-content > [id^='content-'] > div > .label-card > .icons {
+  background-color: var(--color-bar-button);
+  padding: 8px;
+  color: var(--color-white);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email] {
+  color: var(--color-bar-button);
+  padding: 0 5px;
+
+  transition: color 0.5s ease-out;
+}
+
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:hover {
+  color: #e8776e;
+}
+
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:active {
+  color: #34a853;
+}
+
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p {
+  padding: 10px;
+}
+
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p:hover,
+#notes > .all-content > [id^='content-'] > div > #link-content > ul > li:hover {
+  background-color: #d8d8d8;
+}
+#notes > .all-content > [id^='content-'] > div > #alert-content > div > h2 {
+  padding: 10px;
+}
+#notes > .all-content > [id^='content-'] > div > #link-content > ul {
+  list-style: none;
+}
+#notes > .all-content > [id^='content-'] > div > #link-content > ul > li > a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+#notes .popup-alert-father {
+  z-index: 1000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #b8b8b83d;
+}
+/* Style the popup */
+#notes .popup-alert {
+  z-index: 100000000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.137);
+}
+#notes .popup-alert > div > * {
+  padding: 10px;
+}
+#notes .popup-alert > div > * p {
+  font-size: 15pt;
+  padding: 5px 0;
+}
+#notes .popup-alert > div > h2 {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+#notes .popup-alert > div > h2 > span {
+  color: #e8c21a;
+  margin-left: 5px;
+  font-size: 50px;
+}
+
+#notes .buttons-blue {
+  color: var(--color-bar-button);
+  font-weight: 700;
+  font-size: 10pt;
+  padding: 8px;
+  margin: 0 0 0 auto;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+#notes .buttons-blue:hover {
+  background-color: #e2eefd;
+}
+
+#speakeasy-id-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 40px 10px 10px 10px;
+  width: 350px;
+  height: 250px;
+  overflow: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
+  font-size: 15px;
+  z-index: 10000;
+  background-color: var(--color-white);
+}
+#speakeasy-id-container::after {
+  width: 100%;
+  display: block;
+  content: 'Speakeasy ID';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bar-button);
+  padding: 10px 30px;
+  color: var(--color-white);
+}
+#speakeasy-id-container > button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-white);
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 2000;
+}
+#speakeasy-id-container > p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 2px solid var(--color-bar-button-hover);
+}
+#speakeasy-id-container > p .speakeasy-id:hover {
+  color: var(--color-bar-button-hover);
+}
+
+/*Hotkey e idioma*/
+#notes hotkey > h3 {
+  padding: 10px 0 !important;
+}
+
+/*Cursor poiter*/
+#notes.notes-minimize::before,
+#notes .button-success,
+#notes .button-reset,
+#notes > #notesmoove > span:nth-child(3),
+#notes > #notesmoove > span:last-child,
+#notes > #abas > [data-abas],
+#notes > .all-content > [id^='content-'] > div > div > p > input,
+#notes > .all-content > [id^='content-'] > div > div > p > label,
+#notes #hotkey-agendamento,
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
+#notes > .all-content > [id^='content-'] > div > span > #refreshCalendar,
+#notes .buttons-blue,
+#speakeasy-id-container > p > .speakeasy-id,
+#speakeasy-id-container > button {
+  cursor: pointer;
+}
+
+/*
+correção qa gravação
+*/
+.container-qa-gravacao {
+  display: flex;
+  flex-direction: column;
+}
