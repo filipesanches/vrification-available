@@ -406,10 +406,10 @@
 
 
 #tabela{
-  margin-top: 20px;
+  margin-top: 20px !important;
   border-spacing: 0;
 }
-#tabela tbody{
+#tabela thead{
   background-color: #c8c8c8;
 }
 #tabela tr{
