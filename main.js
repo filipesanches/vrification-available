@@ -88,14 +88,11 @@ const resizeWindow = (element) => {
 createStyle('https://filipesanches.github.io/vrification-available/style.css');
 createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 dragElement(notes);
-// Aplica função resizeWindow
-resizeWindow(notes);
 notes.innerHTML = `
 <barra id="notesmoove">
   <span class="material-icons">edit_note</span>
-  <span>Cases Notes 3.0</span>
+  <span>Consultar</span>
   <span>
-    <span class="material-icons" id="dark-mode">dark_mode</span>
     <span class="material-icons minimize">minimize</span>
   </span>
 </barra>
@@ -106,7 +103,7 @@ notes.innerHTML = `
 
 <section class="all-content">
   <div id="content-1" class="hide show">
-  <button id='paste-data'>colar dados</button>
+  <button id='paste-data' class='buttons-blue'>colar dados</button>
   <table id='tabela'>
     <thead>
       <tr>
@@ -137,6 +134,8 @@ minimizeWindowElements.forEach((e) => {
   });
 });
 
+// Aplica função resizeWindow
+resizeWindow(notes);
 function criarTabela() {
   const dados = clipboardData.split('\n');
   var tabela = document.getElementById('tabela');
