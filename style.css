@@ -405,11 +405,14 @@
 }
 
 
-
+#tabela{
+  border-spacing: 0;
+}
 #tabela tr{
+  display: inline-block;
   border-bottom: 1px solid rgb(68, 68, 68);
 }
-#tabela tr:hover{
+#tabela tbody tr:hover{
   background-color: gray;
 }
 #tabela td{
