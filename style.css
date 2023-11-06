@@ -404,10 +404,14 @@
   cursor: pointer;
 }
 
-/*
-correção qa gravação
-*/
-.container-qa-gravacao {
-  display: flex;
-  flex-direction: column;
+
+
+#tabela tr{
+  border-bottom: 1px solid rgb(68, 68, 68);
+}
+#tabela tr:hover{
+  background-color: gray;
+}
+#tabela td{
+  padding: 5px;
 }
