@@ -180,13 +180,15 @@ pasteData.addEventListener('click', function () {
     console.error('A API Clipboard não é suportada neste navegador.');
   }
 });
-document.querySelectorAll('#tabela tbody tr').forEach((e) => {
+document.querySelectorAll('table tbody tr').forEach((e) => {
   console.log(e.style.background);
-  e.addEventListener('click', () => {
-    if (e.style.background == 'rgb(145, 207, 145)') {
-      e.style.background = 'transparent';
+});
+document.addEventListener('click', (e) => {
+  if(e.target.closest('table tbody tr')){
+    if (e.target.parentNode.style.background == 'rgb(145, 207, 145)') {
+      e.target.parentNode.style.background = 'transparent';
     } else {
-      e.style.background = 'rgb(145, 207, 145)';
+      e.target.parentNode.style.background = 'rgb(145, 207, 145)';
     }
-  });
+  }
 });
