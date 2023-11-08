@@ -405,21 +405,21 @@
 }
 
 
-#tabela{
+[id*="tabela"]{
   margin-top: 20px !important;
   border-spacing: 0;
 }
-#tabela thead{
+[id*="tabela"] thead{
   background-color: #c8c8c8;
 }
-#tabela tr{
+[id*="tabela"] tr{
   border: none;
   border-bottom: 1px solid black;
 }
-#tabela tbody tr:hover{
+[id*="tabela"] tbody tr:hover{
   background-color: rgb(163, 163, 163);
   cursor: pointer;
 }
-#tabela td{
+[id*="tabela"] td{
   padding: 10px !important;
 }
